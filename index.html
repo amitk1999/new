@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shortfeed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        body {
+            font-family: "Yantramanav", Sans-serif;
+            background-color: #F7FAFF;
+        }
+        
+        header {
+            width: 100%;
+            float: left;
+            position: fixed;
+            top: 0px;
+            background-color: #ED7C05;
+            z-index: 999;
+        }
+        
+        header .login-btn {
+            width: 100%;
+            float: left;
+            padding: 26px 0px;
+            margin: 0px;
+            text-align: right;
+        }
+        
+        header .login-btn li {
+            list-style: none;
+            display: inline-block;
+        }
+        
+        header .login-btn li a {
+            text-decoration: none;
+            color: #000;
+            position: relative;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 13px 40px;
+            border-radius: 3px;
+            display: inline-block;
+            -webkit-transition: all 500ms ease;
+            font-family: "Yantramanav", Sans-serif;
+            background-color: #230b0a;
+        }
+        
+        header .login-btn li:last-child a {
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0px 10px 15px rgb(0 0 0 / 10%);
+            padding: 13px 40px;
+            background-color: #230b0a;
+        }
+        
+        header .login-btn li:first-child a:hover {
+            color: #ffffff;
+            background-color: #230b0a;
+        }
+        
+        header .navbar-nav li a {
+            position: relative;
+            display: block;
+            color: #ffffff !important;
+            text-align: center;
+            line-height: 30px;
+            text-transform: capitalize;
+            letter-spacing: 0px;
+            opacity: 1;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: "Yantramanav", Sans-serif;
+        }
+        
+        header .navbar-nav li {
+            padding: 0px 16px;
+        }
+        
+        .first-section {
+            width: 100%;
+            float: left;
+            padding-top: 77px;
+            height: 1310px;
+        }
+        
+        .first-section h1 {
+            position: relative;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 80px;
+            font-family: "Yantramanav", Sans-serif;
+            line-height: 90px;
+            text-align: center;
+            margin: auto;
+            padding-top: 118px;
+        }
+        
+        .first-section h3 {
+            position: relative;
+            color: #e2e2e2;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 36px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .secend-section {
+            width: 100%;
+            float: left;
+            top: 582px;
+            position: absolute;
+        }
+        
+        .secend-section ul.top-image-list {
+            width: 100%;
+            float: left;
+            text-align: center;
+        }
+        
+        .secend-section ul.top-image-list li {
+            width: 296px;
+            margin: 0px 45px;
+            list-style: none;
+            display: inline-block;
+        }
+        
+        .secend-section ul.top-image-list li:nth-child(2) {
+            width: 350px;
+        }
+        
+        .secend-section ul.top-image-list li:nth-child(2) img {
+            transform: scale(1.04, 1.04);
+        }
+        
+        .secend-section ul.top-image-list li img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .apps-button {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            float: left;
+            margin-top: 70px;
+        }
+        
+        .apps-button a {
+            position: relative;
+            margin: 0px 12px 25px;
+            display: inline-block;
+        }
+        
+        .third-section {
+            width: 100%;
+            float: left;
+            padding-top: 30px;
+        }
+        
+        .count-list {
+            width: 87%;
+            background-color: #fff;
+            margin: auto;
+            box-shadow: 0px 8px 16px 0px rgb(0 45 170 / 10%);
+            padding: 50px 0px 33px 0px;
+        }
+        
+        .count-list h2 {
+            font-size: 50px;
+            color: #102465;
+            font-weight: 600;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+        .count-list p {
+            font-size: 15px;
+            color: #102465;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0px;
+            padding-top: 5px;
+        }
+        
+        .image-list ul li img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+        
+        section.image-list {
+            padding-top: 50px;
+            width: 100%;
+            float: left;
+        }
+        
+        section.image-list ul {
+            width: 100%;
+            float: left;
+        }
+        
+        section.image-list ul li {
+            float: left;
+            list-style: none;
+            width: 17%;
+            margin: 0px 14px;
+        }
+        
+        section.image-list h2 {
+            color: #102465;
+            text-align: center;
+            font-family: "Poppins", Sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 48px;
+        }
+        
+        section.image-list p {
+            text-align: center;
+            color: #656565;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            font-family: "Poppins", Sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: center;
+            line-height: 26px;
+        }
+        
+        .submit-btn {
+            padding: 12px 15px;
+            background: #102465;
+            cursor: pointer;
+            width: 100%;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 7px;
+            margin-top: 25px;
+            font-family: poppins, sans-serif;
+            border: none;
+        }
+        
+        .form-input input {
+            position: relative;
+            display: block;
+            width: 100%;
+            line-height: 26px;
+            padding: 10px 20px;
+            height: 50px;
+            color: #222;
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 6px;
+            background-color: #eff3ff;
+            border: 1px solid #e3eaff;
+            transition: all 300ms ease;
+            font-family: roboto, sans-serif;
+        }
+        
+        .form-input {
+            width: 100%;
+            float: left;
+            padding: 30px 73px;
+        }
+        
+        .form-input textarea {
+            position: relative;
+            display: block;
+            width: 100%;
+            line-height: 26px;
+            padding: 10px 20px;
+            color: #222;
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 6px;
+            background-color: #eff3ff;
+            border: 1px solid #e3eaff;
+            transition: all 300ms ease;
+            font-family: roboto, sans-serif;
+        }
+        
+        .form-input .col-6 {
+            margin-bottom: 25px;
+        }
+        
+        .form-input .col-sm-6 {
+            margin-bottom: 25px;
+        }
+        
+        .form-input .col-md-6 {
+            margin-bottom: 25px;
+        }
+        
+        .form-input .col-lg-6 {
+            margin-bottom: 25px;
+        }
+        
+        .form-input .col-xl-6 {
+            margin-bottom: 25px;
+        }
+        
+        .form-input h2 {
+            color: #102465;
+            text-align: center;
+            font-family: "Poppins", Sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 48px;
+            padding-bottom: 30px;
+        }
+        
+        .form-input h3 {
+            color: #102465;
+            font-family: "Poppins", Sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .form-input p {
+            text-align: left;
+            color: #6C8493;
+            font-family: "Roboto", Sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+        }
+        
+        .image-icon {
+            background-color: #151CBD;
+            color: #FFFFFF;
+            font-size: 20px;
+            padding: 25px;
+            height: 70px;
+            width: 70px;
+        }
+        
+        @media only screen and (max-width: 576px) and (min-width: 0px) {
+            .form-input {
+                padding: 30px 10px
+            }
+            .first-section h1 {
+                line-height: 50px;
+                font-size: 38px;
+            }
+            .navbar-brand.logoimage img {
+                transform: scale(0.6);
+                width: 100px;
+                vertical-align: middle;
+                border-style: none;
+                display: block;
+                z-index: 9999 !important;
+                height: 89px;
+            }
+            .first-section h3 {
+                font-size: 19px;
+            }
+            .secend-section ul.top-image-list li {
+                margin: 0px 0px 40px 0px;
+            }
+            .mobile-hidden img {
+                display: none;
+            }
+            .first-section .container-fluid {
+                height: auto !important;
+                padding-bottom: 40px;
+            }
+            .secend-section {
+                margin-top: 25px;
+            }
+            .secend-section ul.top-image-list {
+                padding: 0px;
+            }
+            .secend-section ul.top-image-list li {
+                width: 100%;
+            }
+            header {
+                height: 70px;
+                overflow: hidden;
+            }
+            .secend-section {
+                position: relative;
+                top: 0px;
+            }
+            .first-section {
+                height: auto !important;
+                padding-top: 0px;
+            }
+            .apps-button {
+                margin-top: 0px;
+            }
+            .count-list h2 {
+                font-size: 20px;
+            }
+            .count-list p {
+                font-size: 12px;
+            }
+            section.image-list h2 {
+                font-size: 27px;
+            }
+            .form-input h2 {
+                font-size: 27px;
+                line-height: 35px;
+            }
+            section.image-list ul li {
+                width: 100%;
+                margin: 10px 0px;
+                text-align: center;
+            }
+            section.image-list ul {
+                padding: 0px;
+            }
+            .form-input h3 {
+                font-size: 20px;
+            }
+            .form-input p {
+                font-size: 12px;
+            }
+            .form-input input {
+                font-size: 12px;
+            }
+            .submit-btn {
+                font-size: 13px;
+            }
+            header .login-btn li:last-child a {
+                font-size: 12px;
+                padding: 10px 20px;
+            }
+            header .login-btn li a {
+                font-size: 12px;
+                padding: 10px 10px;
+            }
+            .mobile-menu {
+                width: 35px;
+                height: 40px;
+                background-color: transparent;
+                margin-top: 25px;
+                z-index: 999;
+                display: block !important;
+            }
+            .mobile-menu span {
+                width: 100%;
+                height: 2px;
+                background-color: #000;
+                display: block;
+                margin: 7px 0px;
+            }
+            header nav.navbar.navbar-expand-sm.navbar-dark.mobile-menu-list {
+                position: fixed;
+                top: 60px;
+                width: 100%;
+                background-color: #000;
+                left: 0px;
+            }
+            header .mobile-menu-list .navbar-nav li {
+                padding: 0px !important;
+                margin: 0px;
+                border-bottom: 1px solid #fff;
+            }
+            .navbar-brand.logoimage {
+                color: #fff;
+                position: fixed;
+                top: -7px;
+                left: 0px;
+                right: 91px;
+                margin: auto;
+                text-align: center;
+                width: 100px
+            }
+            header nav.navbar.navbar-expand-sm.navbar-dark.mobile-menu-list ul.navbar-nav {
+                width: 100%;
+                display: none !important;
+                text-align: left;
+            }
+            .navbar-dark .navbar-nav .nav-link {
+                text-align: left;
+                padding-left: 20px !important;
+            }
+            nav.navbar.navbar-expand-sm.navbar-dark {
+                display: none;
+            }
+            .navbar-dark .navbar-brand {
+                display: none;
+            }
+            a.navbar-brand.logoimage {
+                display: block !important;
+            }
+        }
+        
+        @media only screen and (max-width: 992px) and (min-width: 576px) {
+            .form-input {
+                padding: 30px 10px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="apl3-main-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-6">
+                    <div class="mobile-menu" style="display: none;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <a class="navbar-brand logoimage" href="#" style="display:none; height: 30px; width: 30px;"><img src="./img/Shortfeed_Logo_Png.png" alt="logo"></a>
+                    <nav class="navbar navbar-expand-sm navbar-dark mobile-menu-list" style="padding: 0px;">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" style="padding-right: 46px;padding-left: 0px;">
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">News</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#">Price</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                        </ul>
+                        <a class="navbar-brand logoimage" id="LogoHide" href="#" style="margin:auto;"><img src="./img/Shortfeed_Logo_Png.png" height="100px" width="100px"></a>
+                    </nav>
+
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                    <ul class="login-btn">
+                        <li><a href="#">Hindi</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="first-section">
+        <div class="container-fluid" style="background-color: #ED7C05;height: 980px;">
+            <h1>Make Your life easy<br> by Our app|</h1>
+            <h3>It is specially designed for any kind of mobile app, software, sass, startup,<br> marketing, one page and other online businesses.</h3>
+        </div>
+        <div class="secend-section">
+            <ul class="top-image-list">
+                <li class="mobile-hidden"><img src="./img/app-1.png"></li>
+                <li><img src="./img/app-2.png"></li>
+                <li class="mobile-hidden"><img src="./img/app-3.png"></li>
+            </ul>
+        </div>
+        <!-- <div class="social-nav">
+				<a href="#">
+				<i aria-hidden="true" class="fab fa-facebook-f"></i></a>
+				<a href="#">
+				<i aria-hidden="true" class="fab fa-twitter"></i></a>
+								<a href="#">
+				<i aria-hidden="true" class="fab fa-dribbble"></i></a>
+								<a href="#">
+				<i aria-hidden="true" class="fab fa-instagram"></i></a>
+			</div> -->
+    </section>
+    <div class="apps-button">
+        <a href="#"><img src="app-store.png" alt=""></a>
+        <a href="#"><img src="play.png" alt=""></a>
+    </div>
+    <section class="third-section">
+        <div class="count-list">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                        <h2>264K+</h2>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>264K+</h2>
+                        <p>Team Members</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>264K+</h2>
+                        <p>Line Of Code</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>264K+</h2>
+                        <p>Cup Of Coffee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="image-list">
+        <h2>Apps Screenshots</h2>
+        <p>A Private Limited is the most popular type of partnership Malta. The limited liability<br> is, in fact, the only type of company allowed by Companies.</p>
+        <ul>
+            <li style="border: 1px solid black;"><img src="./img/s4.jpg"></li>
+            <li style="border: 1px solid black;"><img src="./img/s3.jpg"></li>
+            <li style="border: 1px solid black;"><img src="./img/s2.jpg"></li>
+            <li style="border: 1px solid black;"><img src="./img/s1.jpg"></li>
+            <li style="border: 1px solid black;"><img src="./img/s5.jpg"></li>
+        </ul>
+    </section>
+    <section class="form-input">
+        <h2>Get in touch for any kind of<br> help and informations</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-3">
+                            <div class="image-icon"></div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-9 col-9">
+                            <h3>Our head office address:</h3>
+                            <p>3556 Hartford Way Vlg, Mount Pleasant, SC,<br> 29466, Australia.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-3">
+                            <div class="image-icon"></div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-9 col-9">
+                            <h3>Call for help:</h3>
+                            <p>(734) 697-2907<br> (843) 971-1906</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-3">
+                            <div class="image-icon"></div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-9 col-9">
+                            <h3>Mail us for information</h3>
+                            <p>noreply@shortfeed.com<br> noreply@shortfeed.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="First Name *"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="Last Name *"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="Your mail *"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="Phone number *"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="web address *"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12"><input type="text" name="" class="form-control" placeholder="Subject *"></div>
+                        <div class="col-12"><textarea rows="5" class="form-control"></textarea>
+                            <button type="button" class="btn btn-info submit-btn">Send now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".mobile-menu").click(function() {
+            $(".mobile-menu-list").toggle();
+        });
+    });
+</script>
